@@ -15,7 +15,7 @@
     "rollbackh": "heroku run knex migrate:rollback -a ft-secret-recipes-7",
     "databaseh": "heroku pg:psql -a ft-secret-recipes-7",
     "seedh": "heroku run knex seed:run -a ft-secret-recipes-7",
-    "test": "cross-env NODE_ENV=testing jest --watchAll --verbose --runInBand",
+    "test": "jest",
     "deploy": "git push heroku main"
   },
   "engines": {
