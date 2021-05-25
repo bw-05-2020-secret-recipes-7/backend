@@ -46,11 +46,13 @@ const validateLogin = (req, res, next) => {
 
   Users.findUser(username)
     .then((user) => {
-      if (user && bcrypt.compareSync(password, user.password)) {
+      if (!user) {
+        res.status(401).json({message: 'Invalid Username'})
+      } else if (user && bcrypt.compareSync(password, user.password)) {
         req.user = user;
         next();
       } else {
-        res.status(401).json({ message: 'Invalid Login Credentials' });
+        res.status(401).json({ message: 'Invalid Password' });
       }
     })
     .catch(next);
@@ -63,7 +65,7 @@ const tokenBuilder = (req, res, next) => {
   } else {
 
     const payload = {
-      sub: user.id,
+      sub: user.user_id,
       username: user.username,
     };
     const options = {
