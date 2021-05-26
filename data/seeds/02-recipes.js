@@ -12,6 +12,13 @@ exports.seed = async function(knex) {
       instructions: '1. Get ice cream out of freezer and let sit for 10 minutes to soften 2. Scoop ice cream into bowl 3. Add desired toppings',
       category: 'dessert',
       user_id: 2
+    },
+    { recipe_title: 'Succotash',
+      source: 'me',
+      ingredients: '2 cups fresh lima beans, 2 cups fresh corn, 4 slices bacon',
+      instructions: '1. Chop bacon slices into small pieces. 2. Add bacon to preheated frying pan with a dash of baking grease or oil and sautee for 5 minutes at medium heat. 3. Add fresh lima beans and corn and 1 cup water. 4. Bring to boil, stirring occasionally 5. Reduce heat to low, cover, and simmer until veggies are fully cooked. ',
+      category: 'sides - veggies',
+      user_id: 1
     }
   ]);
 };

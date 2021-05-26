@@ -11,7 +11,7 @@ exports.up = async function(knex) {
       recipes.string('source', 128);
       recipes.string('ingredients', 512).notNullable();
       recipes.string('instructions', 512).notNullable();
-      recipes.string('category', 128);
+      recipes.string('category', 128).notNullable();
       recipes.integer('user_id')
         .unsigned()
         .notNullable()

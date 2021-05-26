@@ -82,9 +82,28 @@ const tokenBuilder = (req, res, next) => {
   }
 }
 
+const restricted = (req, res, next) => {
+  const token = req.headers.authorization;
+  if (token) {
+    jwt.verify(token, JWT_SECRET, (err, decoded) => {
+      if (err) {
+        res.status(401).json({
+          message: 'Invalid Token. Please login to access recipes'
+        });
+      } else {
+        req.decodedJwt = decoded;
+        next();
+      }
+    })
+  } else {
+    res.status(401).json({ message: 'Login to access recipe database' });
+  }
+};
+
 module.exports = {
   checkForRequiredCredentials,
   validateUsername,
   validateLogin,
-  tokenBuilder
+  tokenBuilder,
+  restricted
 };
